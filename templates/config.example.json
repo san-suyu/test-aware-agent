@@ -1,0 +1,10 @@
+{
+  "defaultProject": "projectname",
+  "instructionsPath": "templates/test-agent-instructions.md",
+  "projects": {
+    "projectname": {
+      "path": "C:/path/to/repo",
+      "registry": "src/test/test-registry.json"
+    }
+  }
+}

@@ -1,3 +1,9 @@
 config.json
 output.md
+last-test-audit.json
+
 __pycache__/
+*.pyc
+
+.venv/
+.env

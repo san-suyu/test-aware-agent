@@ -20,6 +20,7 @@ project = config["projects"][project_name]
 
 instructions = Path(config["instructionsPath"]).read_text(encoding="utf-8")
 
+# tool agent - discover & run tests
 agent = Agent(
   model=model,
   tools=[
@@ -32,6 +33,18 @@ agent = Agent(
       hooks.TestResultAuditHook(),
     ],
 )
+
+# summary agent - format known results
+summary_agent = Agent(
+  model=model,
+  system_prompt="""
+You summarize verified test results.
+You do not call tools.
+You do not suggest tool calls.
+You only use data provided in the prompt.
+"""
+)
+
 
 config = json.loads(Path("config.json").read_text(encoding="utf-8"))
 
@@ -84,7 +97,7 @@ runResults:
 {json.dumps(run_results, indent=2)}
 """
 
-result = agent(test_run)
+result = summary_agent(test_run)
 
 Path("output.md").write_text(str(result), encoding="utf-8")
 
@@ -93,6 +106,7 @@ while True:
   if user_input.lower() in ("quit", "exit"):
     break
   if user_input.lower() == ("run"):
-    user_input = test_run
-  result = agent(user_input) 
+    result = summary_agent(user_input)
+  else: 
+    result = agent(user_input)  
 Path("output.md").write_text(str(result), encoding="utf-8")
