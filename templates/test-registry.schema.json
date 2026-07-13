@@ -1,0 +1,63 @@
+{
+  "type": "object",
+  "required": [
+    "suites"
+  ],
+  "properties": {
+    "suites": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "type",
+          "command",
+          "runWhenChanged",
+          "cost"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "feature",
+              "stress",
+              "integration",
+              "e2e",
+              "unit"
+            ]
+          },
+          "command": {
+            "type": "string"
+          },
+          "runWhenChanged": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "covers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cost": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

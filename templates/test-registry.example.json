@@ -1,0 +1,32 @@
+{
+  "suites": [
+    {
+      "id": "messages-feature",
+      "name": "Messages feature tests",
+      "type": "feature",
+      "command": "npm run test -- src/test/messages",
+      "runWhenChanged": [
+        "src/features/messages/**",
+        "src/components/messages/**"
+      ],
+      "covers": [
+        "send message",
+        "delete message",
+        "message appears"
+      ],
+      "cost": "low"
+    },
+    {
+      "id": "multi-user-stress",
+      "name": "Multi-user stress tests",
+      "type": "stress",
+      "command": "npm run test:stress -- multi-user",
+      "runWhenChanged": [
+        "src/realtime/**",
+        "src/server/**",
+        "src/features/messages/**"
+      ],
+      "cost": "high"
+    }
+  ]
+}

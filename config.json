@@ -1,0 +1,10 @@
+{
+  "defaultProject": "fiestaconnect",
+  "instructionsPath": "templates/test-agent-instructions.md",
+  "projects": {
+    "fiestaconnect": {
+      "path": "",
+      "registry": "src/test/test-registry.json"
+    }
+  }
+}
