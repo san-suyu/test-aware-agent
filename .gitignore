@@ -1,6 +1,8 @@
 config.json
 output.md
 last-test-audit.json
+last-test-creation-audit.json
+.test-agent/
 
 __pycache__/
 *.pyc

@@ -9,6 +9,13 @@ For every feature change:
 - Update outdated tests only when behavior intentionally changed.
 - Choose focused suites from the test registry before running broad checks.
 
+For broken-test repair:
+- Use the captured test failure queue before asking the user to paste failure output.
+- Repair test mechanics only when the failure is classified as repair-safe.
+- Do not weaken assertions, delete meaningful coverage, or rewrite product expectations just to make tests pass.
+- If a failure appears to be a product bug or behavior mismatch, report it instead of silently changing the test expectation.
+- After repairing a test, rerun the same suite or direct test files and record the repair attempt.
+
 When selecting tests:
 - Match changed files against `runWhenChanged`.
 - Prefer low-cost feature tests first.
